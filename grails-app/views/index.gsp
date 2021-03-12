@@ -16,7 +16,7 @@
 <div class="nav-item">
     <br>
     <h2><i class="fas fa-link fa-2x"></i>LINK SHARING</h2>
-
+    <div class="message">${flash.messagefail}</div>
     <div class="searchbar">
         <div class="search-container">
             <form action="/action_page.php">
@@ -56,6 +56,7 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="container">
+
                     <g:form class="was-validated" controller="login" action="loginuser" method="POST" >
                         <div class="form-group">
                             <label for="uname">Username:</label>
@@ -104,7 +105,7 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="container">
-
+                      <div class="message">${flash.message}</div>
                     <g:form class="was-validated" controller="user" action="save" method="POST" >
                         <div class="form-group">
                             <label for="firstName">First Name:</label>

@@ -16,7 +16,7 @@ class UserCO implements Validateable{
     static constraints = {
         importFrom User
 
-        email(nullable: false,email: true,unique: true,blank: false)
+        email(nullable: false,unique: true,blank: false)
         firstName(nullable: false)
         lastName(nullable: false)
         userName(nullable: false, unique: true)

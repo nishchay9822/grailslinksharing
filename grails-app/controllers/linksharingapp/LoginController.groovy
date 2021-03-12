@@ -4,19 +4,22 @@ class LoginController {
   LoginService loginService
     def index() { }
 
-    def loginuser()
-    {
+    def loginuser() {
 
-        def user = User.findWhere(userName:  params['userName'], password: params['password'])
-        if(user)
-        {
-            session.user= user
-          println("\n\n---user logged in---\n\n")
-          redirect(controller: 'user' , action: 'dashboard')
-          flash.message = "Logged in as <b>$user.firstName $user.lastName ($user.email)</b>"
+        def user = User.findWhere(userName: params['userName'], password: params['password'])
+        if (user) {
+            session.user = user
+            println("\n\n---user logged in---\n\n")
+
+            flash.messagesuccess = "Logged in as <b>$user.firstName $user.lastName ($user.email)</b>"
+            redirect(controller: 'user', action: 'dashboard')
 
         }
-         render(view: '/index')
+        else {
+            flash.messagefail = "Username or password dont match"
+
+            redirect(controller: 'user', action: 'index')
+        }
 //        else {
 //          if()
 //        }

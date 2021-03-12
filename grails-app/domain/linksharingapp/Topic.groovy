@@ -8,13 +8,15 @@ class Topic {
     enum Visibility {PUBLIC , PRIVATE}
 
     Visibility visibility;
-     static belongsTo = [createdBy: User];
+    static belongsTo = [createdBy: User];
     static hasMany = [resources: Resource, subscriptions: Subscription]
 
-static constraints={
+    static constraints={
 //    name (unique: 'createdBy')
-      name(nullable: true)
-    visibility(nullable: true)
+//        name(nullable: true)
+        name unique:true,nullable: false,blank: false
+        visibility(nullable: true)
+        createdBy nullable: false
 
-}
     }
+}

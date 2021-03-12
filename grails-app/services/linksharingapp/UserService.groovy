@@ -2,6 +2,7 @@ package linksharingapp
 
 import grails.gorm.transactions.Transactional
 import linksharingCO.UserCO
+import grails.web.servlet.mvc.GrailsParameterMap
 
 @Transactional
 class UserService {
@@ -20,6 +21,28 @@ class UserService {
           }
              return user
         }
+
+    def updateuserinfo(long id, def params)
+    {
+         User user=User.findById(id)
+        user.userName = params.userName
+        user.firstName = params.firstName
+        user.lastName = params.lastName
+
+        user.save(flush:true, failOnError:true)
+        return user
+
+    }
+    def updatepassword(long id, def params) {
+        User user = User.findById(id)
+        println(params.password)
+        println(params.confirmPassword)
+        if (params.password == params.confirmPassword) {
+            user.password = params.password
+            user.save(flush: true, failOnError: true)
+            session.user = user
+        }
+    }
 
 //
 //        def dashboard()

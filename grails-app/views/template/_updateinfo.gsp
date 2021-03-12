@@ -14,11 +14,11 @@
     <div class="card-header">Update your details</div>
     <div class="card-body">
                 <div class="container">
-                    <g:form action="/action_page.php" class="was-validated">
+                    <g:form controller="user" action="updateDetails" class="was-validated">
                         <div class="form-group">
                             <label for="fname">First Name:</label>
                             <input type="text" class="form-control" id="fname"
-                                   placeholder="Enter your first name" name="fname" required>
+                                   placeholder="Enter your first name" name="firstName" required>
 
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
@@ -27,14 +27,14 @@
                             <div class="form-group">
                                 <label for="Lname">Last Name:</label>
                                 <input type="text" class="form-control" id="Lname" placeholder="Enter your last name"
-                                       name="pswd" required>
+                                       name="lastName" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                             <div class="form-group">
                                 <label for="uname">Username:</label>
                                 <input type="text" class="form-control" id="uname" placeholder="Enter username"
-                                       name="pswd" required>
+                                       name="userName" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>

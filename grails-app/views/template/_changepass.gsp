@@ -13,12 +13,12 @@
     <div class="card-header">Change Password</div>
     <div class="card-body">
                <div class="container">
-                <g:form name="create_topic" controller="topic" method="post" action="createTopic">
+                <g:form controller="user"  action="updatePassword">
 
                     <div class="form-group">
                         <label for="pwd">Password:</label>
                         <input type="password" class="form-control" id="pwd" placeholder="Enter password"
-                               name="pwd" required=""/>
+                               name="password" required=""/>
                         <h5>Use at least one digit, one upper case and one special character</h5>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="pwd">Confirm Password:</label>
                         <input type="password" class="form-control" id="pwd"
-                               placeholder="Enter password again" name="pswd" required>
+                               placeholder="Enter password again" name="confirmpassword" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>

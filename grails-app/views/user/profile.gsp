@@ -17,11 +17,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <title>Profile</title>
 </head>
 
 <body>
+<div class="row">
 <g:render template="/template/LinkSharing"/>
+</div>
 <div class="row">
 <div class="col-md-5 pull-left"><g:render template="/template/userprofile" /></div>
 
