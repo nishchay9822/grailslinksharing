@@ -1,8 +1,6 @@
 <!-- TOPIC SHOW PAGE
    POSTS OF 'TOPIC ' TEMPLATE -->
 
-<div class="row">
-    <div class="col-md-5 pull-left">
         <div class="posts">
             <div class="card">
                 <div class="card-header">POSTS: ${TOPIC}
@@ -45,5 +43,3 @@
             </div>
         </div>
 
-    </div>
-</div>

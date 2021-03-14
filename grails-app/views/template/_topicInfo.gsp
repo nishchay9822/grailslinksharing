@@ -16,16 +16,16 @@
                                         <table class="table table-striped" width="100px">
                                             <tr>
 
-                                                <td>${username}</td>
+                                                <td>${session.user.userName}</td>
                                             </tr>
                                             <tr>
                                                 <td>No. of topics:</td>
                                                 <td>No. of subscription :</td>
                                             </tr>
                                             <tr>
-                                                <td>${topicCountInfo}</td>
+                                                <td><ls:topicCount userId="${session.user.id}"></ls:topicCount></td>
 
-                                                <td>${subscriptionCountInfo}</td>
+                                                <td><ls:subscriptionCount userId="${session.user.id}"></ls:subscriptionCount></td>
                                             </tr>
 
                                         </table>

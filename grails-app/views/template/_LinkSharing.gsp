@@ -42,9 +42,9 @@
         <li class="nav-item">
             <div class="searchbar">
                 <div class="search-container">
-                    <g:form action="/action_page.php">
+                    <g:form controller="user" action="search">
                         <input type="text" placeholder="Search for link" name="search">
-                        <button type="submit"> <i class="fas fa-search"></i> search</button>
+                        <button type="submit" id="search"> <i class="fas fa-search"></i> search</button>
                     </g:form>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <h4 class="modal-title">Create Topic</h4>
             </div>
             <div class="modal-body">
-                <g:form name="create_topic" controller="topic"  action="save" method="POST">
+                <g:form controller="topic"  action="save" method="POST">
                     <div class="form-group">
                         <label for="topicname">
                             Topic-Name</label>
@@ -107,12 +107,11 @@
                         <option name="private" value="PRIVATE">Private</option>
                     </select>
 
-                    <td colspan="2" class="col-lg-3">
+
 
                         <button type="submit" class="btn btn-primary btn-block">Save</button>
                         <button type="submit" class="btn btn-primary btn-block">Cancel
                         </button>
-                    </td>
                 </g:form>
             </div>
         </div>
@@ -131,35 +130,32 @@
                 <h4 class="modal-title">shareLink</h4>
             </div>
             <div class="modal-body">
-                <g:form name="create_topic" controller="topic" method="post" action="createTopic">
+                <g:form controller="resource"  action="createLinkResource" >
 
                     <div class="form-group">
                         <label for="link">Link</label>
-                        <input type="text" class="form-control" id="link" placeholder="provide a valid link"
-                               name="link">
+                        <input type="url" class="form-control" id="link" placeholder="provide a valid link"
+                               name="url" value="${res?.url}">
                     </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea rows="3" cols="29" size="30" id="desc" placeholder="provide description"
-                                  name="linkDescription" required></textarea>
+                                  name="description" required value="${res?.description}"></textarea>
 
                     </div>
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <select name="" style="min-width: 285px">
-                            <option></option>
-                        </select>
+                        <g:select name="topicSaved" from="${linksharingapp.Topic.list().name}"
+                                  class="dropdown-toggle btn btn-default col-sm-8" value="${res?.topicSaved}"/>
                     </div>
 
-                    <td colspan="2" class="col-lg-3">
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Share
-                        </submitButton>
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Cancel
-                        </submitButton>
-                    </td>
 
+                <button type="submit" class="btn btn-primary btn-block">Share</button>
+                <button type="submit" class="btn btn-primary btn-block">Cancel
+                </button>
 
                 </g:form>
+
 
 
             </div>
@@ -182,34 +178,32 @@
                 <h4 class="modal-title">Share Documents</h4>
             </div>
             <div class="modal-body">
-                <form name="create_topic" controller="topic" method="post" action="createTopic">
+                <g:form  controller="resource"  action="createFileResource">
 
                     <div class="form-group">
                         <label for="doc">Browse Document:</label>
-                        <input type="file" id="doc" name="doc" accept="image/*">
+                        <input type="file" id="doc" name="filePath" accept="image/*" value="${res?.filePath}">
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea rows="3" cols="29" size="30" id="description" placeholder="provide description"
-                                  name="linkDescription" required></textarea>
+                                  name="description" required value="${res?.description}"></textarea>
 
                     </div>
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <select name="" style="min-width: 285px">
-                            <option></option>
-                        </select>
+                        <g:select name="topicSaved" from="${linksharingapp.Topic.list().name}"
+                                  class="dropdown-toggle btn btn-default col-sm-8" value="${res?.topicSaved}"/>
                     </div>
 
-                    <td colspan="2" class="col-lg-3">
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Share
-                        </submitButton>
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Cancel
-                        </submitButton>
-                    </td>
+
+                <button type="submit" class="btn btn-primary btn-block">Share</button>
+                <button type="submit" class="btn btn-primary btn-block">Cancel
+                </button>
+                </g:form>
 
 
-                </form>
+
 
 
             </div>
@@ -231,10 +225,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Send Invittation</h4>
+                <h4 class="modal-title">Send Invitation</h4>
             </div>
             <div class="modal-body">
-                <form name="create_topic" controller="topic" method="post" action="createTopic">
+                <g:form name="create_topic" controller="topic" method="post" action="createTopic">
 
                     <div class="form-group">
                         <label for="email">Email:</label>
@@ -243,20 +237,17 @@
 
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <select name="" style="min-width: 285px">
-                            <option></option>
-                        </select>
+                        <g:select name="topic" from="${linksharingapp.Topic.list().name}"
+                                  class="dropdown-toggle btn btn-default col-sm-8"/>
                     </div>
 
-                    <td colspan="2" class="col-lg-3">
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Share
-                        </submitButton>
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Cancel
-                        </submitButton>
-                    </td>
 
+                    <button type="submit" class="btn btn-primary btn-block">Share invite</button>
+                    <button type="submit" class="btn btn-primary btn-block">Cancel
+                    </button>
 
-                </form>
+                    </g:form>
+
 
 
             </div>
@@ -265,5 +256,30 @@
 
     </div>
 </div>
+
+<script>
+
+    $(document).ready(function(){
+        // console.log($("#name").val("nisjas"))
+        $("#search").on("click", function(){
+            myfunction();
+            //myfunction2();
+        });
+    });
+
+    function myfunction(){
+        // console.log("hi")
+        //$("#ff").text("hi " + $("#name").val());
+        //alert($("#name").val())
+        $.ajax({
+            url: "http://localhost:8090/user/search",
+            data: {search: $(".search").val()},
+            success: function(result){
+                alert("result.topic")
+            },
+            error: function(){
+            }
+        });
+    };
 
 </body>

@@ -3,7 +3,8 @@ package linksharingapp
 class LinkResource {
 
         String url
-        static constraints = {
+        static belongsTo = [resource: Resource]
+       static constraints = {
             url(url: true, nullable: false, blank: false)
         }
 

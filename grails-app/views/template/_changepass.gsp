@@ -13,7 +13,7 @@
     <div class="card-header">Change Password</div>
     <div class="card-body">
                <div class="container">
-                <g:form controller="user"  action="updatePassword">
+                <g:form controller="user"  action="updatePassword" class="was-validated">
 
                     <div class="form-group">
                         <label for="pwd">Password:</label>
@@ -26,12 +26,12 @@
                     <div class="form-group">
                         <label for="pwd">Confirm Password:</label>
                         <input type="password" class="form-control" id="pwd"
-                               placeholder="Enter password again" name="confirmpassword" required>
+                               placeholder="Enter password again" name="confirmPassword" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
-                        <submitButton name="submit" class="btn btn-primary btn-block" value="save">Update
+                        <submitButton name="submit" class="btn btn-primary btn-block">Update
                         </submitButton>
                 </g:form>
             </div>

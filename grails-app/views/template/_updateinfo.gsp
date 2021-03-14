@@ -39,12 +39,11 @@
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
-                            <div class="form-group form-check">
+                            <div class="form-group">
                                 <label for="doc">photo</label>
                                 <input type="file" id="doc" name="doc" accept="image/*">
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Check this checkbox to continue.</div>
-                            </label>
+
+
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
 

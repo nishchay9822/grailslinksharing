@@ -1,8 +1,9 @@
 package linksharingapp
 
 class LoginController {
-  LoginService loginService
-    def index() { }
+    LoginService loginService
+
+    def index() {}
 
     def loginuser() {
 
@@ -14,8 +15,7 @@ class LoginController {
             flash.messagesuccess = "Logged in as <b>$user.firstName $user.lastName ($user.email)</b>"
             redirect(controller: 'user', action: 'dashboard')
 
-        }
-        else {
+        } else {
             flash.messagefail = "Username or password dont match"
 
             redirect(controller: 'user', action: 'index')
@@ -26,19 +26,9 @@ class LoginController {
     }
 
 
-  def logout()
-  {
-    session.invalidate()
-    redirect(controller:'login', action: 'loginuser')
-  }
-//      User
-//      def islogin = loginService.login(params)
-//      if(islogin)
-//      {
-//        render(view: '/user/Dashboard')
-//      }
-//      else {
-//        render(view: 'index')
-//      }
+    def logout() {
+        session.invalidate()
+        redirect(controller: 'login', action: 'loginuser')
     }
+}
 

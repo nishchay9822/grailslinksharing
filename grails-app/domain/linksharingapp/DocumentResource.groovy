@@ -1,8 +1,9 @@
 package linksharingapp
 
-class DocumentResource  {
+class DocumentResource{
 
     String filePath
+    static belongsTo =[resource: Resource]
     static constraints = {
         filePath nullable: false, blank: false
     }

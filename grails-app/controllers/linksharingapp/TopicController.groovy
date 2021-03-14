@@ -21,37 +21,19 @@ print("validates")
             render "error"
         }
 
-//        params.createdBy=session.user
-////         User user =  User?.get(createdByTd)
-////        Topic topic = TopicCO.findByNameAndCreatedBy(name,session.user)
-////        if (topicCO.validate())
-////        {
-//            topicService.createTopic(params)
-//            flash.message=g.message(code: "topic.saved.updated")
-//            redirect(controller: 'user', action: 'dashboard')
 
 
-//        else {
-//        Topic topic1 = new Topic(topicName: name ,User: createdBy, visibility: visibility)
-//
-//
-//            if (topic1) {
-//                if(topic1.validate()){
-//
-//                    if(topic1.save(flush:true))
-//                        flash.message=g.message(code: "topic.saved.updated")
-//                    else
-//                        flash.error=g.message(code: "topic.not.saved.updated")
-//                }
-//                else{
-//                    flash.error = g.message(code:"topic.save.update.error" )
-//                }
-//            } else{
-//                flash.error = "user
-
-
-//        render(view: '/user/Dashboard')
     }
+    def topicshow()
+    {
+        render(view: '/topic/topicshow')
+    }
+
+//    def showtopics()
+//    {
+//        List<Topic> topicshow = topicService.trendingtopic()
+//       render(view: '/template/_trendingtopic' , model: [topiclist: topicshow])
+//    }
 
 //def save() {
 //    params.createdBy=session.userData

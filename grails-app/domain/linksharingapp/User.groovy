@@ -33,6 +33,8 @@ class User {
         isAdmin(nullable: true)
 
     }
-
+static mapping={
+    table 'USER_DATA'
+}
 
 }

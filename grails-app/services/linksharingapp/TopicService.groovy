@@ -26,26 +26,18 @@ class TopicService {
         //  print( user.errors.allErrors)
     }
 
+   def trendingTopic()
+   {
+      def topic= Topic.list(sort: 'dateCreated')
+       print(topic)
+       return topic
 
-//    def createTopic(Map map) {
-////        ResponseData respData = null
-//
-//        Topic topic1=Topic.findByCreatedByAndName(map.createdBy,map.name)
-//        if(topic1){
-////            respData = new ResponseData(respCode: LSConstants.FAILURE_CODE ,respMessageCode: LSConstants.TOPIC_ALREADY_EXIST)
-//            print "already exists"
-//        }else{
-//            Topic topic = new Topic(map)
-//            Subscription subscription = new Subscription(user: topic.createdBy, topic: topic)
-//            topic.subscriptions=[subscription]
-//            topic.save(flush:true,failonError: true)
-////            respData = new ResponseData(respCode: LSConstants.SUCCESS_CODE ,respMessageCode: LSConstants.TOPIC_CREATE_SUCCESS)
-//              print "topic added"
-//             }
+   }
 
-//        Map respMap =  ["respData":respData]
-//        respMap
+    def topiclist()
+    {
 
+    }
 //
 //    Map changeVisibility(Map map){
 ////        ResponseData respData = null

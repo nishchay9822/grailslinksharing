@@ -40,7 +40,7 @@ class UserService {
         if (params.password == params.confirmPassword) {
             user.password = params.password
             user.save(flush: true, failOnError: true)
-            session.user = user
+            return user
         }
     }
 
@@ -68,15 +68,5 @@ class UserService {
 //        return topicList
 //    }
 
-//    def getTopicCount(User user){
-//        def getTopicSet = user.topics
-//        def topicCount = getTopicSet.size()
-//        return topicCount
-//    }
-//
-//    def getSubscriptionCount(User user){
-//        def getSubscriptionSet = user.subscriptions
-//        def subscriptionCount= getSubscriptionSet.size()
-//        return subscriptionCount
-//    }
+
 }

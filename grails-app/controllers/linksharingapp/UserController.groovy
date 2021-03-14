@@ -2,15 +2,28 @@ package linksharingapp
 import linksharingCO.UserCO
 class UserController {
     UserService userService
+    TopicService topicService
+
     def index() {
 //        userService.getSubscriptionCount()
 //        userService.getTopicCount()
         render(view: '/index')
     }
 
-    def dashboard()
-    {
-        render(view: '/user/Dashboard')
+    def userlist(String userName) {
+        def username = User.findAllByUserName(userName)
+        if (username) {
+            return true
+        }
+
+    }
+
+    def dashboard() {
+        def topicShow = topicService.trendingTopic()
+//        def topicsCount = userService.topicsCount(session.user.userName)
+//        def subsCount  = userService.subscriptionsCount(session.user.userName)
+
+        render(view: '/user/Dashboard', model: [topicList: topicShow])
     }
 
     def save(UserCO userCO) {
@@ -22,9 +35,9 @@ class UserController {
             if (user) {
                 render(view: '/index')
             } else {
-                flash.messageregister= "Registration failed"
+                flash.messageregister = "Registration failed"
             }
-            redirect(controller:"user" , action:"index")
+            redirect(controller: "user", action: "index")
 //        }
 //        }
 //        else
@@ -33,14 +46,15 @@ class UserController {
         render(view: '/index')
 
     }
-    def updateDetails(){
-             def user=session.user
 
-            session.user=userService.updateuserinfo(user.id, params)
-            println(user)
-            println("\n\nvalues updated\n\n")
-            flash.message = "Updated successfully. "
-            redirect(action: 'dashboard')
+    def updateDetails() {
+        def user = session.user
+
+        session.user = userService.updateuserinfo(user.id, params)
+        println(user)
+        println("\n\nvalues updated\n\n")
+        flash.messageprofile = "Updated successfully. "
+        redirect(action: 'dashboard')
 
 //        else{
 //            println("\n\nvalues not updated\n\n")
@@ -48,14 +62,15 @@ class UserController {
 //            redirect(action: 'profile')
 //        }
     }
-    def updatePassword(){
+
+    def updatePassword() {
 //        User user = User.findById(params.id)
-                 def user=session.user
-                userService.updatepassword(user.id,params)
-                println("\n\nvalues updated\n\n")
-                flash.message = "Updated successfully. Please Login again."
-                redirect(action: 'dashboard')
-            }
+        def user = session.user
+        session.user = userService.updatepassword(user.id, params)
+        println("\n\nvalues updated\n\n")
+        flash.messagepassupdated = "Updated successfully. Please Login again."
+        redirect(action: 'dashboard')
+    }
 //            else{
 //                println("\n\nvalues not updated\n\n")
 //                flash.error = "Something went wrong... Please try again."
@@ -70,7 +85,19 @@ class UserController {
     def profile() {
         render(view: '/user/profile')
     }
-    }
+
+//    def search(String search) {
+//        def topic = Topic.findByName(search)
+//        def resource = Resource.findByDescriptionLike(search)
+//
+//        if (topic) {
+//            render([topic: topic] as JSON)
+//        } else {
+//            render(status: 500)
+//        }
+//    }
+}
+
 
 
 

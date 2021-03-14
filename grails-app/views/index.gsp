@@ -187,6 +187,31 @@
 
 %{--</span>--}%
 
+<script>
+
+    $(document).ready(function(){
+        // console.log($("#name").val("nisjas"))
+        $("#userName").on("keydown", function(){
+            myfunction();
+            //myfunction2();
+        });
+    });
+
+    function myfunction(){
+        // console.log("hi")
+        //$("#ff").text("hi " + $("#name").val());
+        //alert($("#name").val())
+        $.ajax({
+            url: "http://localhost:8090/user/userlist",
+            data: {userName: $("#userName").val()},
+            success: function(){
+                alert("You are already registered")
+            },
+            error: function(){
+            }
+        });
+    };
+</script>
 
 </body>
 </html>
