@@ -3,11 +3,14 @@ import linksharingCO.UserCO
 class UserController {
     UserService userService
     TopicService topicService
+    ResourceService resourceService
 
     def index() {
-//        userService.getSubscriptionCount()
-//        userService.getTopicCount()
-        render(view: '/index')
+
+        def recentShare = topicService.recentshare()
+//        def resourceShow = resourceService.postshow(topicShow)
+
+        render(view: '/index', model:[recentList: recentShare])
     }
 
     def userlist(String userName) {
@@ -17,11 +20,17 @@ class UserController {
         }
 
     }
+    def emailcheck(String email)
+    {
+        def em = User.findAllByEmail(email)
+        if(em) {
+            return em
+        }
+    }
 
     def dashboard() {
         def topicShow = topicService.trendingTopic()
-//        def topicsCount = userService.topicsCount(session.user.userName)
-//        def subsCount  = userService.subscriptionsCount(session.user.userName)
+//        def inboxView = topicServce.inbox()
 
         render(view: '/user/Dashboard', model: [topicList: topicShow])
     }
@@ -71,31 +80,33 @@ class UserController {
         flash.messagepassupdated = "Updated successfully. Please Login again."
         redirect(action: 'dashboard')
     }
-//            else{
-//                println("\n\nvalues not updated\n\n")
-//                flash.error = "Something went wrong... Please try again."
-//                redirect(action: 'profile')
-//            }
-//        }
-//        else{
-//            println("\n\nvalues not updated\n\n")
-//            flash.error = "Something went wrong... Please try again."
-//            redirect(action: 'profile')
-//        }
+
     def profile() {
         render(view: '/user/profile')
     }
 
-//    def search(String search) {
-//        def topic = Topic.findByName(search)
-//        def resource = Resource.findByDescriptionLike(search)
+//    def pass(String password){
+//        def l = password.length()
+//            String a = password.split("123456789@!#%&")
+//        def l1 = a.length()
+//                if(l==l1)
+//                {
+//                 render([password: password] as JSON)
+//                }
 //
-//        if (topic) {
-//            render([topic: topic] as JSON)
-//        } else {
-//            render(status: 500)
-//        }
 //    }
+
+
+//    def search(String search) {
+//        def topic = Topief resource = Resource.findByDescriptionLike(search)
+////
+////        if (topic) {
+////            render([topic: topic] as JSON)
+////        } else {
+////            render(status: 500)
+////        }
+////    }c.findByName(search)
+//        d
 }
 
 

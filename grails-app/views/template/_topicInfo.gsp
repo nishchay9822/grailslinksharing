@@ -2,7 +2,7 @@
 
         <div class="posts">
             <div class="card">
-                <div class="card-header">Topic : ${topic}</div>
+                <div class="card-header">Topic : ${topicname.name}</div>
                 <div class="card-body">
                     <div class="container mt-6">
                         <div class="media border p-3">

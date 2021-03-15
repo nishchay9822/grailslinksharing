@@ -1,7 +1,7 @@
 
         <div class="posts">
             <div class="card">
-                <div class="card-header">USER: ${topic}</div>
+                <div class="card-header">USER: ${topicname.name}</div>
                 <div class="card-body">
                     <div class="container mt-6">
                         <div class="media border p-3">

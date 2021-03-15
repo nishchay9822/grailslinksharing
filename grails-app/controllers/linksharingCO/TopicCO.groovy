@@ -8,7 +8,7 @@ class TopicCO implements Validateable {
     String visibility
 
     static constraints = {
-        name unique: 'createdBy',nullable: false,blank: false
+        name unique: true ,nullable: false,blank: false
 //        createdBy nullable: false
     }
 }

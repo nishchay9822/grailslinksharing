@@ -30,5 +30,13 @@ class LoginController {
         session.invalidate()
         redirect(controller: 'login', action: 'loginuser')
     }
+    def logincheck(String userName)
+    {
+        def user = User.findAllByUserName(userName)
+        if(!user)
+        {
+            return false
+        }
+    }
 }
 

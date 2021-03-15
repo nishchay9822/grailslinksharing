@@ -32,7 +32,7 @@
 </div>
 <div class="row">
 
-    <div class="col-md-5 pull-left"><g:render template="/template/topicInfo" /></div>
+    <div class="col-md-5 pull-left"><g:render template="/template/topicinuserprofile" /></div>
 
 %{--    <div class="col-md-2"></div>--}%
         <br>

@@ -78,7 +78,7 @@
                                                           data-target="#login"></button></div>
                         <h6><a name="forgotPasswordLink" class="btn btn-default" href="${createLink(controller: 'login', action: 'forgotPassword')}">Forgot
                         Password</a></h6>
-                        <g:actionSubmit value='loginuser'/>
+                        <g:actionSubmit value='loginuser' id="submit"/>
                     </g:form>
                 </div>
             </div>
@@ -114,8 +114,6 @@
 
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
-%{--                            <div class="user-present"><button type="button" class="nav-link" data-toggle="modal"--}%
-%{--                                                              data-target="#login">go to login</button></div>--}%
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name:</label>
@@ -159,7 +157,7 @@
                             <input type="file" class="form-control" id="photo"
                                    name="photo">
                         </div>
-                        <g:actionSubmit value='save'/>
+                        <button type="submit" class="btn btn-primary" id="bt">Register</button>
                     </g:form>
                 </div>
             </div>
@@ -190,11 +188,18 @@
 <script>
 
     $(document).ready(function(){
-        // console.log($("#name").val("nisjas"))
-        $("#userName").on("keydown", function(){
+        $("#userName").on("input", function(){
             myfunction();
-            //myfunction2();
         });
+        $("#password").on("input", function() {
+            myfunction2();
+        });
+        $("#email").on("input", function() {
+            myfunction3();
+        });
+        // $("#uname").on("keyup", function() {
+        //     myfunction4();
+        // });
     });
 
     function myfunction(){
@@ -202,15 +207,64 @@
         //$("#ff").text("hi " + $("#name").val());
         //alert($("#name").val())
         $.ajax({
-            url: "http://localhost:8090/user/userlist",
+            url: "http://localhost:8091/user/userlist",
             data: {userName: $("#userName").val()},
             success: function(){
-                alert("You are already registered")
+
+
+
             },
             error: function(){
+                alert("This username already exists . ")
             }
         });
     };
+
+    function myfunction2(){
+        // console.log("hi")
+        //$("#ff").text("hi " + $("#name").val());
+        //alert($("#name").val())
+        $.ajax({
+            url: "http://localhost:8091/user/pass",
+            data: {password: $("#password").val()},
+            success: function(){
+                alert("Please use at least one upper case one digit and one special character")
+            },
+            error: function(){
+
+            }
+        });
+    };
+
+    function myfunction3(){
+        // console.log("hi")
+        //$("#ff").text("hi " + $("#name").val());
+        //alert($("#name").val())
+        $.ajax({
+            url: "http://localhost:8091/user/emailcheck",
+            data: {email: $("#email").val()},
+            success: function(){
+                alert("Email already exists. Use another email-id")
+            },
+            error: function(){
+
+            }
+        });
+    };
+    // function myfunction4(){
+    //
+    //     $.ajax({
+    //         url: "http://localhost:8091/login/logincheck",
+    //         data: {username: $("#uname").val()},
+    //         success: function(){
+    //             alert("User is not registered . please register")
+    //
+    //         },
+    //         error: function(){
+    //
+    //         }
+    //     });
+    // };
 </script>
 
 </body>

@@ -2,6 +2,7 @@ package linksharingapp
 
 class ResourceController {
     ResourceService resourceService
+    TopicService topicService
     def index() {}
 
 
@@ -20,4 +21,9 @@ class ResourceController {
 
     }
 
+    def postview()
+    {  def topicShow = Topic.findById(params.topicId)
+        def resource = Resource.findById(params.resource)
+        render(view: '/resource/viewpost' , model: [topicList: topicShow, resource: resource]);
+    }
 }

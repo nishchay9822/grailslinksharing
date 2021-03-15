@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="posts">
-    <div class="card">
+    <div class="card" id="sr">
         <div class="card-header">Trending topics</div>
 <g:each in="${topicList}"  var="tt">
         <div class="card-body">
@@ -26,6 +26,7 @@
                     <div class="media-body">
 
                         <div class="row">
+%{--                            <g:img dir="images/profilePicture" class="pImage" file='${tt.createdBy.photo}' alt="Missing Image" />--}%
                             <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
                                  alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">
                             <div class="col-sm-4">
@@ -33,7 +34,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <g:link controller="topic" action="topicshow" params="[topic: tt.name ]"  class="card-text post_textsize"><strong>${tt.name}</strong></g:link>
+                            <g:link controller="topic" action="topicshow"  params="[tName: tt.id]">${tt.name}</g:link>
                             <div class="col-sm-4">
 
                                 <g:link controller="dashboard" action="subscribetopic" class="card-text post_textsize">unsubscribe</g:link>
@@ -102,7 +103,9 @@
             </div>
         </div>
     </div>
-</div>
+<div class="row" id="searchview">
+    <p>.</p>
+    </div>
 
 </body>
 %{--                    <div class="container mt-6">--}%

@@ -29,6 +29,14 @@ class UserService {
         user.firstName = params.firstName
         user.lastName = params.lastName
 
+//        String a="profilePic/${user.userName}.jpeg"
+//        user.photo= a
+//        session.user.photo=user.photo
+//        if(session.user.photo) {
+//            ByteArrayInputStream bis = new ByteArrayInputStream(params.photo.getBytes());
+//            BufferedImage bImage2 = ImageIO.read(bis);
+//            ImageIO.write(bImage2, "jpeg", new File("/home/sahil-arora/Desktop/grails/linksharing3/grails-app/assets/images/profilePic/${user.userName}.jpeg"));
+//        }
         user.save(flush:true, failOnError:true)
         return user
 

@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <g:link controller="topic" action="topicshow" class="card-text post_textsize"><strong>${tt.name}</strong></g:link>
+                                <g:link controller="topic" action="topicshow"  params="[tName: tt.id]">${tt.name}</g:link>
                                 <div class="col-sm-4">
 
                                     <g:link controller="dashboard" action="subscribetopic" class="card-text post_textsize">unsubscribe</g:link>

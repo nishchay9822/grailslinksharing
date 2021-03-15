@@ -9,6 +9,7 @@
 %{--                <button type="button" class="close" data-dismiss="modal">&times;</button>--}%
 
 %{--            </div>--}%
+<body>
 <div class="card">
     <div class="card-header">Change Password</div>
     <div class="card-body">
@@ -24,19 +25,20 @@
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
-                        <label for="pwd">Confirm Password:</label>
-                        <input type="password" class="form-control" id="pwd"
+                        <label for="cpwd">Confirm Password:</label>
+                        <input type="password" class="form-control" id="cpwd"
                                placeholder="Enter password again" name="confirmPassword" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
-                        <submitButton name="submit" class="btn btn-primary btn-block">Update
-                        </submitButton>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </g:form>
             </div>
         </div>
 </div>
+
+</body>
 
 %{--        </div>--}%
 

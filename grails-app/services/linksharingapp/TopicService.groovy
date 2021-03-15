@@ -28,16 +28,20 @@ class TopicService {
 
    def trendingTopic()
    {
-      def topic= Topic.list(sort: 'dateCreated')
-       print(topic)
+      def topic= Topic.list(sort: 'dateCreated', order: 'desc' , offset : 0 ,max: 3)
        return topic
 
    }
-
-    def topiclist()
+    def recentshare()
     {
-
+        def recent=Topic.list(sort:'dateCreated',offset : 0 ,max: 4)
+        return recent
     }
+
+//    def inbox()
+//    {
+//       def posts=
+//    }
 //
 //    Map changeVisibility(Map map){
 ////        ResponseData respData = null

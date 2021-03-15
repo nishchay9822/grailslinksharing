@@ -42,10 +42,9 @@
         <li class="nav-item">
             <div class="searchbar">
                 <div class="search-container">
-                    <g:form controller="user" action="search">
-                        <input type="text" placeholder="Search for link" name="search">
+
+                        <input type="text" placeholder="Search topic" name="search" id="searchbox">
                         <button type="submit" id="search"> <i class="fas fa-search"></i> search</button>
-                    </g:form>
                 </div>
             </div>
         </li>
@@ -95,9 +94,9 @@
             <div class="modal-body">
                 <g:form controller="topic"  action="save" method="POST">
                     <div class="form-group">
-                        <label for="topicname">
+                        <label for="topicName">
                             Topic-Name</label>
-                        <input type="text" class="form-control" id="topicname"
+                        <input type="text" class="form-control" id="topicName"
                                placeholder="Enter a topic name" name="name" value="${topic?.name}" >
                         <g:hiddenField name="createdBy" value="${session.user}"/>
                     </div>
@@ -110,7 +109,7 @@
 
 
                         <button type="submit" class="btn btn-primary btn-block">Save</button>
-                        <button type="submit" class="btn btn-primary btn-block">Cancel
+                        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancel
                         </button>
                 </g:form>
             </div>
@@ -151,7 +150,7 @@
 
 
                 <button type="submit" class="btn btn-primary btn-block">Share</button>
-                <button type="submit" class="btn btn-primary btn-block">Cancel
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancel
                 </button>
 
                 </g:form>
@@ -198,7 +197,7 @@
 
 
                 <button type="submit" class="btn btn-primary btn-block">Share</button>
-                <button type="submit" class="btn btn-primary btn-block">Cancel
+                <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancel
                 </button>
                 </g:form>
 
@@ -243,7 +242,7 @@
 
 
                     <button type="submit" class="btn btn-primary btn-block">Share invite</button>
-                    <button type="submit" class="btn btn-primary btn-block">Cancel
+                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancel
                     </button>
 
                     </g:form>
@@ -257,29 +256,50 @@
     </div>
 </div>
 
-<script>
+%{--<script>--}%
 
-    $(document).ready(function(){
-        // console.log($("#name").val("nisjas"))
-        $("#search").on("click", function(){
-            myfunction();
-            //myfunction2();
-        });
-    });
+%{--    $(document).ready(function(){--}%
+%{--        // console.log($("#name").val("nisjas"))--}%
+%{--        $("#topicName").on("input", function(){--}%
+%{--            myfunction();--}%
+%{--            //myfunction2();--}%
+%{--        });--}%
+%{--        $("#searchbox").on("input", function(){--}%
+%{--            myfunction2();--}%
+%{--            //myfunction2();--}%
+%{--        });--}%
+%{--    });--}%
 
-    function myfunction(){
-        // console.log("hi")
-        //$("#ff").text("hi " + $("#name").val());
-        //alert($("#name").val())
-        $.ajax({
-            url: "http://localhost:8090/user/search",
-            data: {search: $(".search").val()},
-            success: function(result){
-                alert("result.topic")
-            },
-            error: function(){
-            }
-        });
-    };
+%{--    function myfunction(){--}%
+%{--        // console.log("hi")--}%
+%{--        //$("#ff").text("hi " + $("#name").val());--}%
+%{--        //alert($("#name").val())--}%
+%{--        $.ajax({--}%
+%{--            url: "http://localhost:8091/topic/unique",--}%
+%{--            data: {topicName: $("#topicName").val()},--}%
+%{--            success: function(){--}%
+%{--                alert("topic already exists! .Choose a different name")--}%
+%{--            },--}%
+%{--            error: function(){--}%
+%{--            }--}%
+%{--        });--}%
+%{--    };--}%
+%{--    function myfunction(){--}%
+%{--        // console.log("hi")--}%
+%{--        //$("#ff").text("hi " + $("#name").val());--}%
+%{--        //alert($("#name").val())--}%
+%{--        $.ajax({--}%
+%{--            url: "http://localhost:8091/topic/search",--}%
+%{--            data: {search: $("#searchbox").val()},--}%
+%{--            dataType: JSON,--}%
+%{--            success: function(result){--}%
+%{--                $()--}%
+
+%{--            },--}%
+%{--            error: function(){--}%
+%{--            }--}%
+%{--        });--}%
+%{--    };--}%
+%{--</script>--}%
 
 </body>

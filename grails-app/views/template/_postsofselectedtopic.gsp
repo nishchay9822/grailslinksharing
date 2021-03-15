@@ -3,7 +3,7 @@
 
         <div class="posts">
             <div class="card">
-                <div class="card-header">POSTS: ${TOPIC}
+                <div class="card-header">POSTS: ${topicname.name}
                     <div class="searchbar">
                         <div class="search-container">
                             <form action="/action_page.php">

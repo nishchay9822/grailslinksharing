@@ -33,6 +33,12 @@ class ResourceService {
         res.addToLinkResources(link).save(flush: true, failOnError: true)
         topic.addToResources(res).save(flush: true, failOnError: true)
     }
+    def postshow(List topicShow)
+    {
+
+        def resource=Resource.findAllByTopic(topicShow)
+        return resource
+    }
 
 
 

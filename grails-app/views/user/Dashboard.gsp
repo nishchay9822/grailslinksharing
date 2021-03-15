@@ -33,7 +33,53 @@
         <div class="col-md-5 pull-right"><g:render template="/template/trendingtopic"></g:render></div>
     </div>
 
+<script>
 
+    $(document).ready(function(){
+        // console.log($("#name").val("nisjas"))
+        $("#topicName").on("input", function(){
+            myfunction();
+            //myfunction2();
+        });
+        $("#searchbox").on("keydown", function(){
+            myfunction2();
+            //myfunction2();
+        });
+    });
+
+    function myfunction(){
+        // console.log("hi")
+        //$("#ff").text("hi " + $("#name").val());
+        //alert($("#name").val())
+        $.ajax({
+            url: "http://localhost:8091/topic/unique",
+            data: {topicName: $("#topicName").val()},
+            success: function(){
+                alert("topic already exists! .Choose a different name")
+            },
+            error: function(){
+            }
+        });
+    };
+    function myfunction2(){
+        // console.log("hi")
+        //$("#ff").text("hi " + $("#name").val());
+        //alert($("#name").val())
+        $.ajax({
+            method: 'post',
+            url: "http://localhost:8091/topic/search",
+            data: {search: $("#searchbox").val()},
+            dataType: "JSON",
+            success: function(result){
+                $('#searchview').text(result.topic + result.userName + result.description),
+                    $("#sr").hide('slow')
+
+            },
+            error: function(){
+            }
+        });
+    };
+</script>
 
 
 

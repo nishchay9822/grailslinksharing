@@ -18,13 +18,26 @@
                             <div class="row">
                                 <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
                                      alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">
-                                <div class="col-sm-4">
+                                <div class="col-sm-4 pull-left">
                                     <strong class="card-text post_textsize">${tt.createdBy.userName}</strong>
+
                                 </div>
-                                <span>
-                                    <a href="#">Mark as read</a>&nbsp<a href="#">View post</a>&nbsp<a href="#">Download</a>&nbsp<a
+                                <div class="col-sm-6 pull-right">
+                                    <g:link controller="topic" action="topicshow"  params="[tName: tt.id]">${tt.name}</g:link>
+
+                                </div>
+                             </div>
+                                <div class="row">
+                                    <div class="col-sm-5 pull left">
+                                <p>${tt.resources.description}</p>
+                                    </div>
+                                <div class="row">
+
+                                    <a href="#">Mark as read</a>&nbsp<g:link controller="resource" action="postview" params="[resource: tt.resources.id , topicId: tt.id]">View post</g:link>&nbsp<a href="#">Download</a>&nbsp<a
                                         href="#">View full site</a>
-                                </span>
+
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
