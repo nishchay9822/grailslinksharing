@@ -12,6 +12,7 @@ class User {
     Date dateCreated
     Date lastUpdated
     Byte[] photo
+    String verificationToken
     static hasMany = [
             subscriptions: Subscription, resources: Resource, resourceRatings: ResourceRating,
             readingItems : ReadingItem, topics: Topic
@@ -31,7 +32,7 @@ class User {
         topics(nullable: true)
         isActive(nullable: true)
         isAdmin(nullable: true)
-
+        verificationToken(nullable: true)
     }
 static mapping={
     table 'USER_DATA'

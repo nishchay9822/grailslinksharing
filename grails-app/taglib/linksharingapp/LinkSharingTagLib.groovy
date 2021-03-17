@@ -25,6 +25,7 @@ class LinkSharingTagLib {
         Long topicId = attrs.topicId
         if (topicId) {
             out << Resource.countByTopic(Topic.load(topicId))
+
         }
     }
 

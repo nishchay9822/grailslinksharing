@@ -3,12 +3,12 @@
 
 <body>
 <div class="recent">
-    <div class="card">
+    <div class="card" style="border:  2px solid black;">
         <div class="card-header">Recent Shares</div>
 <g:each in="${recentList}"  var="rl">
 %{--    <g:each in="${resourceList}" var="res">--}%
         <div class="card-body ">
-            <div class="container mt-3">
+            <div class="container mt-3" style="border:  2px solid black;">
                 <div class="media border p-3">
 %{--                    <g:img src="img.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px"/>--}%
                     <div class="media-body">

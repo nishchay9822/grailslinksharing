@@ -144,7 +144,7 @@
                     </div>
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <g:select name="topicSaved" from="${linksharingapp.Topic.list().name}"
+                        <g:select name="topicSaved" from="${topics}"
                                   class="dropdown-toggle btn btn-default col-sm-8" value="${res?.topicSaved}"/>
                     </div>
 
@@ -191,7 +191,7 @@
                     </div>
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <g:select name="topicSaved" from="${linksharingapp.Topic.list().name}"
+                        <g:select name="topicSaved" from="${topics}"
                                   class="dropdown-toggle btn btn-default col-sm-8" value="${res?.topicSaved}"/>
                     </div>
 
@@ -227,7 +227,7 @@
                 <h4 class="modal-title">Send Invitation</h4>
             </div>
             <div class="modal-body">
-                <g:form name="create_topic" controller="topic" method="post" action="createTopic">
+                <g:form name="create_topic" controller="login" method="post" action="sendInvitation">
 
                     <div class="form-group">
                         <label for="email">Email:</label>
@@ -237,7 +237,7 @@
                     <div class="form-group">
                         <h6>Topic</h6>
                         <g:select name="topic" from="${linksharingapp.Topic.list().name}"
-                                  class="dropdown-toggle btn btn-default col-sm-8"/>
+                                  class="dropdown-toggle btn btn-default col-sm-8" value="topic?.topic"/>
                     </div>
 
 

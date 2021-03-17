@@ -11,27 +11,29 @@ import  linksharingapp.Subscription
 class TopicService {
 
 
-    def createTopic(long id, TopicCO topicCO) {
+    def createTopic(long id,String visibility,def params) {
 
         User user = User.findById(id)
-        Topic topic = new Topic(name: topicCO.name, visibility: topicCO.visibility, createdBy: user)
-        topic.save(flush: true,failOnError: true)
+        Topic topic = new Topic(name: params.name, visibility: visibility, createdBy: user)
 
-        Subscription subscription = new Subscription(user: user, topic: topic , seriousness: Subscription.Seriousness.SERIOUS).save(flush:true, failOnError: true)
+        user.addToTopics(topic)
+        topic.save(flush: true,failOnError: true)
+        Subscription subscription = new Subscription(user: user, topic: topic , seriousness: Subscription.Seriousness.VERY_SERIOUS).save(flush:true, failOnError: true)
         topic.addToSubscriptions(subscription)
         user.addToSubscriptions(subscription)
         print(topic.properties);
-        user.addToTopics(topic)
-        user.save(flush:true,failOnError: true)
+
+//        user.save(flush:true,failOnError: true)
         //  print( user.errors.allErrors)
     }
 
-   def trendingTopic()
-   {
-      def topic= Topic.list(sort: 'dateCreated', order: 'desc' , offset : 0 ,max: 3)
-       return topic
-
-   }
+//   def trendingTopic()
+//   {
+//       def topic = Topic.findAllByName()
+////      def topic= Topic.list(sort: 'dateCreated', order: 'desc' , offset : 0 ,max: 3)
+//       return topic
+//
+//   }
     def recentshare()
     {
         def recent=Topic.list(sort:'dateCreated',offset : 0 ,max: 4)

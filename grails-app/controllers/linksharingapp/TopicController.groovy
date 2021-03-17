@@ -10,17 +10,14 @@ class TopicController {
 
     }
 
-    def save(TopicCO topicCO) {
+    def save(Topic topic) {
         //  controller="dashboard" action="addtopic"
-        if (topicCO.validate()) {
-print("validates")
-            def user = session.user
-            topicService.createTopic(user.id, topicCO);
+
+            String vis = topic.visibility.convertValue(params.visibility)
+            topicService.createTopic(session.user.id,vis,params);
             flash.messageontopiccreation = "topic created"
             redirect(controller: "user", action: 'dashboard')
-        } else {
-            render "error"
-        }
+
 
 
 
@@ -32,6 +29,8 @@ print("validates")
 
         render(view: '/topic/topicshow' , model:[topicname:topicname])
     }
+
+
     def unique(String topicName)
     {
         def topic = Topic.findAllByName(topicName)

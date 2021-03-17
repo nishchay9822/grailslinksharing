@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.6.0/full-all/ckeditor.js"></script>
     <title>Link sharing</title>
 </head>
 <body class="back">
@@ -76,8 +77,8 @@
                         </div>
                         <div class="user-present"><button type="button" class="nav-link" data-toggle="modal"
                                                           data-target="#login"></button></div>
-                        <h6><a name="forgotPasswordLink" class="btn btn-default" href="${createLink(controller: 'login', action: 'forgotPassword')}">Forgot
-                        Password</a></h6>
+                        <a name="forgotPasswordLink" class="btn btn-default" data-toggle="modal" data-target="#forget_password_modal" >Forgot
+                        Password</a>
                         <g:actionSubmit value='loginuser' id="submit"/>
                     </g:form>
                 </div>
@@ -88,6 +89,35 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="forget_password_modal" role="dialog " aria-hidden="true">
+    <div class="modal-dialog">
+        <g:form   controller="login" action="forgetPassword" class="form-horizontal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Forget Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group form-group-sm">
+                        <div class="col-xs-5 ">
+                            <label class=" control-label" for="userName">Enter your Email</label>
+                        </div>
+                        <div class="col-xs-7 ">
+                            <input class="form-control" name="email" type="text" id="usName" >
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </g:form>
+    </div>
+
+</div>
+
 
 
 
@@ -265,6 +295,10 @@
     //         }
     //     });
     // };
+
+        CKEDITOR.replace('body', {
+        extraPlugins: 'codesnippet'
+    });
 </script>
 
 </body>

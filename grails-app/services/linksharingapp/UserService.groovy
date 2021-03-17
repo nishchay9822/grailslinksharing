@@ -64,17 +64,6 @@ class UserService {
 
     }
 
-//    List<Topic> getSubscribedTopics()
-//    {
-//        List<Topic> topicList= Subscription.createCriteria().list
-//                {
-//                    projections{
-//                        property('topic')
-//                    }
-//                    eq('user.id', id)
-//                }
-//        return topicList
-//    }
 
 
 }

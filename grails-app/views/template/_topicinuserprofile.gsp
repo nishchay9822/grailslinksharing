@@ -1,8 +1,8 @@
 <div class="posts">
-    <div class="card">
+    <div class="card" style="border:  2px solid black;">
         <div class="card-header">Topic</div>
         <div class="card-body">
-            <div class="container mt-6">
+            <div class="container mt-6" style="border:  2px solid black;">
                 <div class="media border p-3">
                     <img src="img.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                     <div class="media-body">

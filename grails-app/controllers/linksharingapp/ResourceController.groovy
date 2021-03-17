@@ -23,7 +23,8 @@ class ResourceController {
 
     def postview()
     {  def topicShow = Topic.findById(params.topicId)
+        def recent=Topic.list(sort:'dateCreated',offset : 0 ,max: 4)
         def resource = Resource.findById(params.resource)
-        render(view: '/resource/viewpost' , model: [topicList: topicShow, resource: resource]);
+        render(view: '/resource/viewpost' , model: [topicList: topicShow, resource: resource, trend: recent]);
     }
 }

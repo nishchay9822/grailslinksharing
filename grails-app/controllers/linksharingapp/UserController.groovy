@@ -29,10 +29,11 @@ class UserController {
     }
 
     def dashboard() {
-        def topicShow = topicService.trendingTopic()
+        def topics =  Topic.findAllByCreatedBy(session.user,[sort: 'dateCreated' , offset: 0 , max: 4,])
 //        def inboxView = topicServce.inbox()
+        def recent=Topic.list(sort:'dateCreated',offset : 0 ,max: 4)
 
-        render(view: '/user/Dashboard', model: [topicList: topicShow])
+        render(view: '/user/Dashboard', model: [topicList: topics,trend: recent])
     }
 
     def save(UserCO userCO) {
@@ -116,15 +117,15 @@ class UserController {
 
 
 
-
+//
 //
 //    def sendInvitation(){
 //        params.user = session.user
 //        Map respMap = userService.sendInvitation(params)
 ////        respMap.respData.respMessageCode = message(code: respMap.respData.respMessageCode)
-
+//
 //        render respMap as JSON
-
+//
 //        def topicCount=userService.getTopicCount(user)
 //        def subscriptionCount=userService.getSubscriptionCount(user)
 //        render(view: '/user/userDashboard' ,

@@ -6,7 +6,7 @@
 <body>
 
 <div class="posts">
-    <div class="card">
+    <div class="card" style="border:  2px solid black;">
         <div class="card-header">TOP POSTS
             <span class="filter" >
 
@@ -19,7 +19,7 @@
             </span>
         </div>
         <div class="card-body">
-            <div class="container mt-3">
+            <div class="container mt-3" style="border:  2px solid black;">
                 <div class="media border p-3">
                     <g:img src="img.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px"/>
                     <div class="media-body">

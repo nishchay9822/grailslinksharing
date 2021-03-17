@@ -2,23 +2,29 @@ package linksharingapp
 
 class SubscriptionController {
     SubscriptionService subscriptionService
-    def index() { }
 
-    def save(Long userId, Long topicId) {
+    def index() {}
 
-        User user = User?.get(userId)
-        Topic topic = Topic?.get(topicId)
-        if (user && topic) {
+    def save(Subscription subscription) {
+        print(params)
+        def user= session.user
+        String vis = subscription.seriousness.convertValue(params.seriousness)
+        Topic topic = Topic?.get(params.topicid)
+//        if (user && topic) {
 
-            if (subscriptionService.saveSubscription(topic, user)) {
-//                flash.message = g.message(code: "subscription.saved")
-            } else {
-//                flash.error = g.message(code: "subscription.not.saved")
-            }
-        } else {
-//            flash.error = g.message(code: "topic.user.not.set")
-        }
-        redirect(controller: 'user' , action: 'dashboard')
+            subscriptionService.saveSubscription(topic, user, vis)
+            flash.messagesub="subscription added"
+
+
+
+
+    }
+
+    def getSubscribedTopics()
+    {
+        def user= session.user
+        def topics=subscriptionService.subscribedTopics(user)
+        render(view: '/template/_LinkSharing' , model:[topics: topics])
     }
 
 }

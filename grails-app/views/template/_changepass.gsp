@@ -10,7 +10,7 @@
 
 %{--            </div>--}%
 <body>
-<div class="card">
+<div class="card" style="border:  2px solid black;">
     <div class="card-header">Change Password</div>
     <div class="card-body">
                <div class="container">

@@ -5,7 +5,16 @@ class Topic {
     Date dateCreated
     Date lastUpdated
 
-    enum Visibility {PUBLIC , PRIVATE}
+    enum Visibility{
+        PUBLIC,PRIVATE
+        def convertValue(String val){
+            if(val=='PUBLIC'){
+                return Visibility.PUBLIC
+            }else{
+                return Visibility.PRIVATE
+            }
+        }
+    }
 
     Visibility visibility;
     static belongsTo = [createdBy: User];
@@ -16,5 +25,8 @@ class Topic {
         visibility(nullable: true)
         createdBy nullable: false
 
+    }
+    static mapping = {
+        createdBy lazy: true
     }
 }

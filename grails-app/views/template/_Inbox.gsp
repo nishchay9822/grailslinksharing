@@ -2,11 +2,11 @@
 
 
     <div class="posts">
-        <div class="card">
+        <div class="card" style="border:  2px solid black;">
             <div class="card-header">Inbox</div>
             <g:each in="${topicList}"  var="tt">
             <div class="card-body">
-                <div class="container mt-6">
+                <div class="container mt-6" style="border:  2px solid black;">
                     %{--            <g:if test="${topicList}">--}%
 
 
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-        </div>
+
             </g:each>
         </div>
 

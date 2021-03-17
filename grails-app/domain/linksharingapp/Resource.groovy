@@ -15,6 +15,7 @@ class Resource {
     }
     static mapping={
         table 'RESOURCE_INFO'
+        description type: 'text'
     }
 
 }
