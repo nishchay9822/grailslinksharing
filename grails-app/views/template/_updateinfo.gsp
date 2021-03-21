@@ -14,7 +14,7 @@
     <div class="card-header">Update your details</div>
     <div class="card-body">
                 <div class="container">
-                    <g:form controller="user" action="updateDetails" class="was-validated">
+                    <g:form controller="user" action="updateDetails" class="was-validated" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="fname">First Name:</label>
                             <input type="text" class="form-control" id="fname"
@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label for="doc">photo</label>
-                                <input type="file" id="doc" name="doc" accept="image/*">
+                                <input type="file" id="doc" name="photo" >
 
 
                             </div>

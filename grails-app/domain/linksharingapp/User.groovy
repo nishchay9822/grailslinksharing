@@ -11,7 +11,7 @@ class User {
     Boolean isAdmin
     Date dateCreated
     Date lastUpdated
-    Byte[] photo
+    String photo
     String verificationToken
     static hasMany = [
             subscriptions: Subscription, resources: Resource, resourceRatings: ResourceRating,
@@ -36,6 +36,7 @@ class User {
     }
 static mapping={
     table 'USER_DATA'
+    photo type: 'text'
 }
 
 }

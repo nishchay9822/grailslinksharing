@@ -11,10 +11,11 @@
 %{--            </div>--}%
 <body>
 <div class="card" style="border:  2px solid black;">
+    <div class="message" >${flash.messagepassupdated}</div>
     <div class="card-header">Change Password</div>
     <div class="card-body">
                <div class="container">
-                <g:form controller="user"  action="updatePassword" class="was-validated">
+                <g:form controller="user"  action="updatePassword" class="was-validated" >
 
                     <div class="form-group">
                         <label for="pwd">Password:</label>

@@ -20,6 +20,10 @@
 </div>
 
 <div class="message">${flash.messagesuccess}</div>
+<div class="message">${flash.messagepassupdated}</div>
+<div class="message">${flash.messageresource}</div>
+<div class="message">${flash.messagelink}</div>
+<div class="message">${flash.messageontopiccreation}</div>
 <div class="row">
     <div class="col-md-5 pull-left">
         <g:render template="/template/userprofile"></g:render></div>

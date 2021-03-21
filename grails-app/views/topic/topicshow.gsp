@@ -10,7 +10,7 @@
 <head>
     <title></title>
 </head>
-
+<g:if test="${session.user!=null}">
 <body>
 <div class="row">
     <g:render template="/template/LinkSharing"></g:render>
@@ -32,4 +32,8 @@
 </div>
 
 </body>
+</g:if>
+<g:else>
+    render: "Page not found"
+</g:else>
 </html>

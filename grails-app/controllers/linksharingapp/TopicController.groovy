@@ -11,24 +11,20 @@ class TopicController {
     }
 
     def save(Topic topic) {
-        //  controller="dashboard" action="addtopic"
-
-            String vis = topic.visibility.convertValue(params.visibility)
-            topicService.createTopic(session.user.id,vis,params);
+            String visibility = topic.visibility.convertValue(params.visibility)
+            topicService.createTopic(session.user.id,visibility,params);
             flash.messageontopiccreation = "topic created"
             redirect(controller: "user", action: 'dashboard')
-
-
-
-
     }
+
+
     def  topicshow()
     {
-//
         def topicname = Topic.findById(params.tName)
-
-        render(view: '/topic/topicshow' , model:[topicname:topicname])
+        def substopic = Subscription.findAllByUser(session.user).topic.name
+        render(view: '/topic/topicshow' , model:[topicname:topicname, substopic: substopic])
     }
+
 
 
     def unique(String topicName)
@@ -39,20 +35,48 @@ class TopicController {
             return true
         }
     }
+
+
+
     def search()
     {
+            def result = Topic.findAllByNameLike("%${params.search}%")
 
-//            def searchresult = Resource.findAllByDescriptionLike("%${params.search}%")
-            def searchresult = Topic.findAllByNameLike("%${params.search}%")
-
-            if (searchresult) {
-                render([topic: searchresult.id,  description: searchresult.resources.description,
-                        userName: searchresult.createdBy.userName] as JSON)
+            if (result) {
+                render([topic: result.id,  description: result.resources.description,
+                        userName: result.createdBy.userName] as JSON)
             } else {
                 render(status: 500)
             }
 
     }
+
+
+    def delete(Topic topic)
+    {
+
+        if(topic) {
+            def topicc = Topic.findById(params.topicid)
+            topicc.delete(flush: true)
+        }
+        def topics=Topic.list()
+        render(model:[topicname: topics.name , topicid: topics.id] as JSON)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    def showtopics()
 //    {

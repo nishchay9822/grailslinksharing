@@ -18,6 +18,10 @@
     <br>
     <h2><i class="fas fa-link fa-2x"></i>LINK SHARING</h2>
     <div class="message">${flash.messagefail}</div>
+    <div class="message">${flash.messageregistered}</div>
+    <div class="message">${flash.notexist}</div>
+    <div class="message">${flash.messagelogout}</div>
+
     <div class="searchbar">
         <div class="search-container">
             <form action="/action_page.php">
@@ -89,8 +93,8 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="forget_password_modal" role="dialog " aria-hidden="true">
+%{--forgot password--}%
+<div class="modal fade" id="forget_password_modal" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <g:form   controller="login" action="forgetPassword" class="form-horizontal">
             <div class="modal-content">
@@ -218,9 +222,7 @@
 <script>
 
     $(document).ready(function(){
-        $("#userName").on("input", function(){
-            myfunction();
-        });
+
         $("#password").on("input", function() {
             myfunction2();
         });
@@ -231,24 +233,24 @@
         //     myfunction4();
         // });
     });
-
-    function myfunction(){
-        // console.log("hi")
-        //$("#ff").text("hi " + $("#name").val());
-        //alert($("#name").val())
-        $.ajax({
-            url: "http://localhost:8091/user/userlist",
-            data: {userName: $("#userName").val()},
-            success: function(){
-
-
-
-            },
-            error: function(){
-                alert("This username already exists . ")
-            }
-        });
-    };
+    //
+    // function myfunction(){
+    //     // console.log("hi")
+    //     //$("#ff").text("hi " + $("#name").val());
+    //     //alert($("#name").val())
+    //     $.ajax({
+    //         url: "http://localhost:8091/user/userlist",
+    //         data: {userName: $("#userName").val()},
+    //         success: function(){
+    //
+    //
+    //
+    //         },
+    //         error: function(){
+    //             alert("This username already exists . ")
+    //         }
+    //     });
+    // };
 
     function myfunction2(){
         // console.log("hi")

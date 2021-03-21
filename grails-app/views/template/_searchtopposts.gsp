@@ -19,16 +19,15 @@
             </span>
         </div>
         <div class="card-body">
-<g:each in="${recent}" var="tr">
             <div class="container mt-3" style="border:  2px solid black;">
                 <div class="media border p-3">
-                    <g:img dir="images/profilePic" class="pImage" file='${tr.createdBy.photo}' alt="Missing Image"  style="width:60px"/>
+                    <g:img src="img.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px"/>
                     <div class="media-body">
                         <div class="container-sm">
-                            <span class="posttime">${tr.dateCreated}</span>
+                            <span class="posttime">lastpostime@12:00</span>
                             <span class="topic"><a href="#">topic</a></span>
                             <h6>username</h6>
-                            <p>${tr.resources.description}</p>
+                            <p>recent share data will be shown here</p>
 
                         </div>
 
@@ -43,7 +42,6 @@
                 <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
             </div>
         </div>
-    </g:each>
     </div>
 </div>
 

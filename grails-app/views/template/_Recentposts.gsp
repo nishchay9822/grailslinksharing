@@ -10,6 +10,7 @@
         <div class="card-body ">
             <div class="container mt-3" style="border:  2px solid black;">
                 <div class="media border p-3">
+                    <g:img dir="images/profilePic" class="pImage" file='${rl.createdBy.photo}' alt="Missing Image"  style="width:60px"/>
 %{--                    <g:img src="img.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px"/>--}%
                     <div class="media-body">
                         <div class="container-sm">

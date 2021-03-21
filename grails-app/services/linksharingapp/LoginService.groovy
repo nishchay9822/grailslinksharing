@@ -23,6 +23,18 @@ class LoginService {
 
                 }
     }
+    def updatepass(def params) {
+         def user = User.findById(params.user)
+        println(params.password)
+        println(params.confirmPassword)
+        if (params.password == params.confirmPassword) {
+            user.password =params.password
+                    user.save(flush:true)
+
+
+
+        }
+    }
 //
 //            respData = new ResponseData(respCode: LSConstants.SUCCESS_CODE ,respMessageCode: LSConstants.TOPIC_INVITATION_SENT_SUCCESS)
 //            Map respMap =  ["respData":respData]

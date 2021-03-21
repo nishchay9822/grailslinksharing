@@ -26,7 +26,7 @@ class Topic {
         createdBy nullable: false
 
     }
-    static mapping = {
-        createdBy lazy: true
-    }
+//    static mapping = {
+//        createdBy lazy: true
+//    }
 }

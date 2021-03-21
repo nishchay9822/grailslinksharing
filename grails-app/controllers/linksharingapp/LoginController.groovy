@@ -7,10 +7,10 @@ class LoginController {
 
     def index() {}
 
-    def loginuser() {
 
-        def user = User.findWhere(userName: params['userName'], password: params['password'])
-        if (user) {
+    def loginuser() {
+        User user = User.findWhere(userName: params['userName'], password: params['password'])
+        if (user && user.isActive) {
             session.user = user
             println("user logged in")
 
@@ -18,19 +18,17 @@ class LoginController {
             redirect(controller: 'user', action: 'dashboard')
 
         } else {
-            flash.messagefail = "Username or password dont match"
-
+            flash.messagefail = "Username or password dont match TRY AGAIN"
             redirect(controller: 'user', action: 'index')
         }
-//        else {
-//          if()
-//        }
+
     }
 
 
     def logout() {
         session.invalidate()
-        redirect(controller: 'login', action: 'loginuser')
+        flash.messagelogout="logout successful"
+        redirect(controller: 'user', action: 'index')
     }
 
     def logincheck(String userName) {
@@ -51,12 +49,10 @@ class LoginController {
 
         User user = User.findByUserNameOrEmail(params.userName, params.email)
         if (user) {
-//            Date date =getCurrentUTCDate()
-//            use(TimeCategory) {
-//                date = date + 2.days
-//            }
-            String uniqueToken = UUID.randomUUID().toString()
+
+            String uniqueToken = UUID.randomUUID()
             user.verificationToken = uniqueToken
+            user.save(flush:true)
             String url = "http://localhost:8091/login/validateLink?token=" +uniqueToken
             Map mailMap = [:]
             mailMap.userName = user.userName
@@ -65,12 +61,13 @@ class LoginController {
                     {
                         to params.email
                         subject 'Update your password'
-//                        body(view: "/template/forgotpassmail", model: [mailMap])
+
 //
                         html groovyPageRenderer.render(template:"/template/forgotpassmail", model:mailMap)
                     }
         } else {
             flash.notexist = "User does not exist"
+            redirect(controller: 'login', action: 'loginuser')
 
         }
     }
@@ -81,11 +78,26 @@ class LoginController {
         if (user) {
 
             user.verificationToken = null
-            user.merge()
+            render(view: '/template/_forgotpassupdate', model:[user: user])
         } else {
-            Print("link expired")
+            render("link expired")
         }
+    }
 
+    def changePass()
+    {
+            loginService.updatepass(params)
+            println("\n\nvalues updated\n\n")
+            flash.messagepassupdated = "Updated successfully. Please Login again."
+            redirect(controller: 'user' , action:'dashboard')
+
+    }
+
+//    users list for admin page
+    def users()
+    {
+        List<User> users = User.list(sort: 'dateCreated')
+        render(view: '/user/adminview', model:[users: users])
     }
 
 }

@@ -13,9 +13,9 @@
 </head>
 
 <body>
-<div class="row">
-    <g:render template="/template/LinkSharing" /></div>
-</div>
+
+    <g:render template="/template/LinkSharing" />
+
 <br>
 
 <div class="row">

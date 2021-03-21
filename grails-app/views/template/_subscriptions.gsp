@@ -14,8 +14,9 @@
                         <div class="media-body">
 
                             <div class="row">
-                                <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
-                                     alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">
+                                <g:img dir="images/profilePic" class="pImage" file='${tt.createdBy.photo}' alt="Missing Image"  style="width:60px"/>
+%{--                                <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"--}%
+%{--                                     alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">--}%
                                 <div class="col-sm-4">
                                     <strong class="card-text post_textsize">${tt.createdBy.userName}</strong>
                                 </div>
@@ -34,7 +35,7 @@
                                         50
                                     </p>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <strong class="post_textsize">post</strong>
                                     <p>
                                         50

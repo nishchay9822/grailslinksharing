@@ -22,8 +22,8 @@ class Subscription {
         user unique: 'topic'
     }
 
-    static mapping = {
-        topic lazy: true
-        user lazy: true
-    }
+//    static mapping = {
+//        topic lazy: true
+//        user lazy: true
+//    }
 }

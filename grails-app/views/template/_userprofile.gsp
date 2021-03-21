@@ -6,8 +6,9 @@
 
             </div>
             <div class="panel-body" style="border:  2px solid black;">
-                <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"
-                     alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">
+                <g:img dir="images/profilePic" class="pImage" file='${session.user.photo}' alt="Missing Image"  style="width:150px"/>
+%{--                <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"--}%
+%{--                     alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">--}%
                 <table class="table table-striped" >
 
                     <tr>

@@ -8,15 +8,12 @@ class SubscriptionController {
     def save(Subscription subscription) {
         print(params)
         def user= session.user
-        String vis = subscription.seriousness.convertValue(params.seriousness)
+        String sub = subscription.seriousness.convertValue(params.seriousness)
         Topic topic = Topic?.get(params.topicid)
-//        if (user && topic) {
 
-            subscriptionService.saveSubscription(topic, user, vis)
+
+            subscriptionService.saveSubscription(topic, user, sub)
             flash.messagesub="subscription added"
-
-
-
 
     }
 

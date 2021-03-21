@@ -6,7 +6,6 @@
                 <div class="card-body">
                     <div class="container mt-6" style="border:  2px solid black;">
                         <div class="media border p-3">
-                            <img src="img.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                             <div class="media-body">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
@@ -19,11 +18,11 @@
                                                 <td>${session.user.userName}</td>
                                             </tr>
                                             <tr>
-                                                <td>No. of topics:</td>
-                                                <td>No. of subscription :</td>
+                                                <td>No. of posts:</td>
+                                                <td>No. of subscription:</td>
                                             </tr>
                                             <tr>
-                                                <td><ls:topicCount userId="${session.user.id}"></ls:topicCount></td>
+                                                <td><ls:resourceCount topicId="${topicname.id}"></ls:resourceCount></td>
 
                                                 <td><ls:subscriptionCount userId="${session.user.id}"></ls:subscriptionCount></td>
                                             </tr>

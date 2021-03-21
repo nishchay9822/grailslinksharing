@@ -13,7 +13,8 @@
 <div class="container">
     <br>
     <h2><i class="fas fa-link fa-2x"></i>LINK SHARING</h2>
-
+           <span class="message">${flash.messageactive}</span>
+              <span class="message">${flash.messagedeactivate}</span>
     <ul class="nav justify-content-end">
         <li class="nav-item">
             <button type="button" class="nav-link" style="color: pink;" data-toggle="modal"
@@ -44,30 +45,23 @@
                 <div class="search-container">
 
                         <input type="text" placeholder="Search topic" name="search" id="searchbox">
-                        <button type="submit" id="search"> <i class="fas fa-search"></i> search</button>
+                    <button type="submit" id="search"> <i class="fas fa-search"></i> search</button>
                 </div>
             </div>
         </li>
         &nbsp
         <li class="nav-item">
-
-            %{--            <select name="USERNAME" >username--}%
-            %{--                <option name="profile" value="public">Profile</option>--}%
-            %{--                <option name="posts" value="private">Posts</option>--}%
-            %{--                <option name="Topic" value="public">Topic</option>--}%
-            %{--                <option name="Users" value="private">Users</option>--}%
-            %{--                <option name="Logout" value=""></option>--}%
-
-            %{--            </select>--}%
             <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     Hi! ${session.user.userName}
                 </button>
                 <div class="dropdown-menu">
                     <g:link controller="user" action="profile">Profile</g:link><br>
-                    <g:link controller="user" action="index">Users</g:link><br>
-                    <g:link controller="user" action="index">Topics</g:link><br>
-                    <g:link controller="user" action="index">Posts</g:link><br>
+                    <g:link controller="user" action="dashboard">Dashboard</g:link><br>
+                    <g:if test="${session.user.isAdmin}">
+                    <g:link controller="login" action="users">Users</g:link><br>
+                    </g:if>
+%{--                    <g:link controller="user" action="index">Posts</g:link><br>--}%
                     <g:link controller="user" action="index">logout</g:link><br>
                 </div>
             </div>
@@ -144,7 +138,7 @@
                     </div>
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <g:select name="topicSaved" from="${topics}"
+                        <g:select name="topicSaved" from="${substopic}"
                                   class="dropdown-toggle btn btn-default col-sm-8" value="${res?.topicSaved}"/>
                     </div>
 
@@ -191,7 +185,7 @@
                     </div>
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <g:select name="topicSaved" from="${topics}"
+                        <g:select name="topicSaved" from="${substopic}"
                                   class="dropdown-toggle btn btn-default col-sm-8" value="${res?.topicSaved}"/>
                     </div>
 
@@ -236,7 +230,7 @@
 
                     <div class="form-group">
                         <h6>Topic</h6>
-                        <g:select name="topic" from="${linksharingapp.Topic.list().name}"
+                        <g:select name="topic" from="${substopic}"
                                   class="dropdown-toggle btn btn-default col-sm-8" value="topic?.topic"/>
                     </div>
 
@@ -256,50 +250,6 @@
     </div>
 </div>
 
-%{--<script>--}%
 
-%{--    $(document).ready(function(){--}%
-%{--        // console.log($("#name").val("nisjas"))--}%
-%{--        $("#topicName").on("input", function(){--}%
-%{--            myfunction();--}%
-%{--            //myfunction2();--}%
-%{--        });--}%
-%{--        $("#searchbox").on("input", function(){--}%
-%{--            myfunction2();--}%
-%{--            //myfunction2();--}%
-%{--        });--}%
-%{--    });--}%
-
-%{--    function myfunction(){--}%
-%{--        // console.log("hi")--}%
-%{--        //$("#ff").text("hi " + $("#name").val());--}%
-%{--        //alert($("#name").val())--}%
-%{--        $.ajax({--}%
-%{--            url: "http://localhost:8091/topic/unique",--}%
-%{--            data: {topicName: $("#topicName").val()},--}%
-%{--            success: function(){--}%
-%{--                alert("topic already exists! .Choose a different name")--}%
-%{--            },--}%
-%{--            error: function(){--}%
-%{--            }--}%
-%{--        });--}%
-%{--    };--}%
-%{--    function myfunction(){--}%
-%{--        // console.log("hi")--}%
-%{--        //$("#ff").text("hi " + $("#name").val());--}%
-%{--        //alert($("#name").val())--}%
-%{--        $.ajax({--}%
-%{--            url: "http://localhost:8091/topic/search",--}%
-%{--            data: {search: $("#searchbox").val()},--}%
-%{--            dataType: JSON,--}%
-%{--            success: function(result){--}%
-%{--                $()--}%
-
-%{--            },--}%
-%{--            error: function(){--}%
-%{--            }--}%
-%{--        });--}%
-%{--    };--}%
-%{--</script>--}%
 
 </body>
