@@ -10,11 +10,13 @@ class UserService {
 
     def register(UserCO userCO) {
         User user = new User(firstName: userCO.firstName, lastName: userCO.lastName,userName: userCO.userName, email: userCO.email, password: userCO.password, isActive: true)
-              user.save(flush: true, failOnError: true)
-//        else
-//          {
-//              print "invalid data"
-//          }
+//        if(user.validate()) {
+
+            user.save(flush: true, failOnError: true)
+//            Test2Service test = new Test2Service()
+//                   test.save()
+//             Test testt = new Test()
+//              testt.save()
              return user
         }
 

@@ -24,9 +24,13 @@
 <div class="message">${flash.messageresource}</div>
 <div class="message">${flash.messagelink}</div>
 <div class="message">${flash.messageontopiccreation}</div>
+<div class="message">${flash.messagesub}</div>
 <div class="row">
     <div class="col-md-5 pull-left">
-        <g:render template="/template/userprofile"></g:render></div>
+
+        <g:render template="/template/userprofile"></g:render>
+
+    </div>
 
 
     <div class="col-md-7 pull-right"><g:render template="/template/Inbox"></g:render></div>
@@ -69,7 +73,8 @@
             //myfunction2();
         });
         $("#searchbox").on("keydown", function(){
-            myfunction2();
+            var search = $("#searchbox").val()
+            myfunction2(search);
             //myfunction2();
         });
     });
@@ -88,22 +93,20 @@
             }
         });
     };
-    function myfunction2(){
+    function myfunction2(search){
         // console.log("hi")
         //$("#ff").text("hi " + $("#name").val());
         //alert($("#name").val())
         $.ajax({
             method: 'post',
             url: "http://localhost:8091/topic/search",
-            data: {search: $("#searchbox").val()},
+            data: {"search": search},
             dataType: "JSON",
             success: function(result){
-                $('#searchview').text(result.topic + result.userName + result.description),
+                $('#searchview').text(result.topic + result.topicname),
                     $("#sr").hide('slow')
 
             },
-            error: function(){
-            }
         });
     };
 

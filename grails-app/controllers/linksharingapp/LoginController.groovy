@@ -65,6 +65,8 @@ class LoginController {
 //
                         html groovyPageRenderer.render(template:"/template/forgotpassmail", model:mailMap)
                     }
+            flash.messageforgot="Check your mail id to reset your password"
+            redirect(controller: 'user' , action: 'index')
         } else {
             flash.notexist = "User does not exist"
             redirect(controller: 'login', action: 'loginuser')

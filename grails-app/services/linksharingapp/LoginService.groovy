@@ -12,8 +12,8 @@ class LoginService {
         def topic = Topic.findByName(params.topic)
         String url = "http://localhost:8091/topic/topicshow?tName=" + topic.id
         params.topicUrl = url
-        params.sendersName = params.user.userName
-        params.topicName = topic.name
+//        params.sendersName = params.user.userName
+//        params.topicName = topic.name
         params.subject = "Join the Topic using the  Invitation link"
         sendMail
                 {

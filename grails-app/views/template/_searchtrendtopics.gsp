@@ -1,5 +1,5 @@
 
-<head xmlns="http://www.w3.org/1999/html">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
 <div class="posts" style="overflow: scroll ">
     <div class="card" style="border: 2px solid black; " id="sr">
         <div class="card-header">Trending topics</div>
-        <g:each in="${topic}"  var="tr">
+        <g:each in="${result}"  var="tr">
             <div class="card-body card${tr.id}">
                 <div class="container mt-6" style="border:  2px solid black;">
                     %{--            <g:if test="${topicList}">--}%

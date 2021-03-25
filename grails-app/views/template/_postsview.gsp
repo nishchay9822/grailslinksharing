@@ -11,16 +11,17 @@
 </head>
 <body>
         <div class="card" style="border:  2px solid black;">
-            <div class="card-body">
+            <div class="card-body card${resource.id}">
 
                 <div class="container mt-6" style="border:  2px solid black;">
                     <p>${topicList.name}</p>
                     <span>${topicList.createdBy.userName}</span>
                     <div class="media border p-3">
-                        <g:img dir="images/profilePic" class="pImage" file='${session.user.photo}' alt="Missing Image"  style="width:150px"/>
+                        <g:img dir="images/profilePic" class="pImage" file='${topicList.createdBy.photo}' alt="Missing Image"  style="width:150px"/>
 %{--                        <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"--}%
 %{--                             alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px">--}%
                         <div class="media-body">
+                        <p>${resource.description}</p>
                         <div id="rateYo" style="margin-left: 80px;"></div>
 
                         </div>
@@ -30,7 +31,8 @@
                     </div>
                 </div>
                 <p>
-                    <a href="#">Delete</a>&nbsp<a href="#">Edit</a>&nbsp<a href="#">Download</a>&nbsp<a href="#">View full site</a>
+                   <g:if test="${session.user.id == topicList.createdBy.id || session.user.isAdmin}">
+                    <a class="delete" onclick="deleteres(${resource.id})">Delete</a></g:if>&nbsp<a href="#">Edit</a>&nbsp<a href="#">Download</a>&nbsp<a href="#">View full site</a>
                 </p>
             </div>
         </div>
@@ -49,6 +51,20 @@
                    }
                });
            });
+
+           function deleteres(id)
+           {
+               $.ajax({
+                   method: 'post',
+                   url: "http://localhost:8091/resource/delete",
+                   data: {"resourceid": id},
+                   datatype: "JSON",
+                   success: function (result) {
+                       $(".card" + id).hide('slow')
+
+                   },
+               });
+           };
         </script>
         </body>
 

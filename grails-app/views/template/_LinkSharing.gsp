@@ -43,9 +43,10 @@
         <li class="nav-item">
             <div class="searchbar">
                 <div class="search-container">
-
+                       <g:form  controller="topic" action="searching" >
                         <input type="text" placeholder="Search topic" name="search" id="searchbox">
                     <button type="submit" id="search"> <i class="fas fa-search"></i> search</button>
+                       </g:form>
                 </div>
             </div>
         </li>

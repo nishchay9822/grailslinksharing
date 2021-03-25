@@ -6,9 +6,11 @@
     <div class="posts" style=" overflow: scroll;">
         <div class="card" style="border:  2px solid black; ">
             <div class="card-header">Inbox</div>
+        <div style="overflow-x: scroll; height: 1000px">
             <g:each in="${subList}"  var="sb">
                 <g:each in="${sb.topic.resources}" var="tt">
-            <div class="card-body card${tt.topic.id}" style="overflow-x: scroll">
+
+            <div class="card-body card${tt.topic.id}" >
                 <div class="container mt-6" style="border:  2px solid black;">
                     %{--            <g:if test="${topicList}">--}%
 
@@ -44,8 +46,10 @@
                         </div>
                     </div>
                 </div>
+
      </g:each>
             </g:each>
+        </div>
         </div>
 
 

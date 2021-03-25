@@ -44,9 +44,12 @@
                                     Subscribe
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="sr" name="VERY_SERIOUS" value="VERY_SERIOUS" onselect="sub(${tr.id})">VERY_SERIOUS</a><br>
-                                    <a class="sr" name="SERIOUS" value="SERIOUS" onclick="sub(${tr.id})">SERIOUS</a><br>
-                                    <a class="sr" name="CASUAL" value="CASUAL" onclick="sub(${tr.id})">CASUAL</a><br>
+%{--                                    <a class="sr" name="VERY_SERIOUS" value="VERY_SERIOUS" onclick="sub(${tr.id})">VERY_SERIOUS</a><br>--}%
+%{--                                    <a class="sr" name="SERIOUS" value="SERIOUS" onclick="sub(${tr.id})">SERIOUS</a><br>--}%
+%{--                                    <a class="sr" name="CASUAL" value="CASUAL" onclick="sub(${tr.id})">CASUAL</a><br>--}%
+                                    <option value="VERY_SERIOUS" onclick="sub(${tr.id})">VERY_SERIOUS</option>
+                                    <option value="SERIOUS" onclick="sub(${tr.id})">SERIOUS</option>
+                                    <option value="CASUAL"  onclick="sub(${tr.id})">CASUAL</option>
                                 </div>
                             </div>
                                 </g:if>
@@ -64,7 +67,7 @@
                         <div class="col-sm-3">
                             <strong class="post_textsize">post</strong>
                             <p>
-                                50
+                                <ls:resourceCount topicId="${tr.id}"></ls:resourceCount>
                             </p>
                         </div>
                         </div>
@@ -125,27 +128,15 @@
         $.ajax({
                 method: 'post',
                 url: "http://localhost:8091/subscription/save",
-                data: {"topicid": id, "seriousness": $(".dropdown-menu option:selected").val(),},
+                data: {"topicid": id, "seriousness": $(".dropdown-menu option").val()},
                 datatype: "JSON",
                 success: function (result) {
-                    $(".subscribe" + result).hide()
-                        $(".unsubscribe" + result).text("unsubscribe")
+                    $("#subscribe" + id).hide()
+                        $(".unsubscribe" + id).text("unsubscribe")
                 },
             });
         };
-    function unsub(id)
-    {
-        $.ajax({
-            method: 'post',
-            url: "http://localhost:8091/subscription/delete",
-            data: {"topicid": id},
-            datatype: "JSON",
-            success: function (result) {
-                $(".subscribe" + result).text("subscribe")
-                    $(".unsubscribe" + result).hide()
-            },
-        });
-    };
+
 
     function deletetopic(id)
     {
@@ -159,6 +150,7 @@
             },
         });
     };
+
 
 </script>
 

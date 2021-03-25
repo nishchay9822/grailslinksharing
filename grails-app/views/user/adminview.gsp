@@ -30,6 +30,7 @@
                 <th>Manage</th>
             </tr>
             <g:each in="${users}" var="us">
+                <g:if test="${!us.isAdmin}">
             <tr width="10px"  >
                 <td>${us.id}</td>
                 <td>${us.userName}</td>
@@ -43,7 +44,9 @@
                 <g:else>
                     <td><g:link controller="user" action="activateaccount" params="[userid: us.id]">activate</g:link></td>
                 </g:else>
+
             </tr>
+                </g:if>
             </g:each>
 
         </table>

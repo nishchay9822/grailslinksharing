@@ -4,7 +4,7 @@
 <div class="posts" style=" overflow: scroll;">
     <div class="card" style="border:  2px solid black; ">
         <div class="card-header">Inbox</div>
-        <g:each in="${topic}"  var="tt">
+        <g:each in="${result}"  var="tt">
             <div class="card-body">
                 <div class="container mt-6" style="border:  2px solid black;">
                     %{--            <g:if test="${topicList}">--}%

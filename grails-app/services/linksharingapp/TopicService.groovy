@@ -40,6 +40,30 @@ class TopicService {
         return recent
     }
 
+    def fetchSubscribedTopic(User user){
+        List<Topic> topics = user.subscriptions*.topic.sort{
+            Topic topic -> topic.resources.lastUpdated
+        }
+        return topics
+    }
+
+    def trendingTopics(User user){
+        def criteria = Topic.createCriteria()
+
+        List<Topic> topicList = criteria.listDistinct {
+            or{
+                'subscriptions'{
+                    eq('user',user)
+                }
+                eq('visibility', Topic.Visibility.PUBLIC)
+            }
+        }
+        topicList.sort {
+            Topic topic -> -topic.resources.size()
+        }
+         return topicList
+    }
+
 //    def inbox()
 //    {
 //       def posts=

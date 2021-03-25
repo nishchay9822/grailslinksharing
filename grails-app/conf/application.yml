@@ -89,17 +89,18 @@ hibernate:
         use_second_level_cache: false
         use_query_cache: false
 dataSource:
-    pooled: true
-    jmxExport: true
-    driverClassName: oracle.jdbc.OracleDriver
-    username: ls
-    password: ls123
+        pooled: true
+        jmxExport: true
+        driverClassName: oracle.jdbc.OracleDriver
+        username: ls
+        password: ls123
 
 environments:
     development:
         dataSource:
             dbCreate: update
             url: jdbc:oracle:thin:@localhost:1521/orcl
+
     test:
         dataSource:
             dbCreate: update

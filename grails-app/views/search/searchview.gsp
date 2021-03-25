@@ -18,7 +18,7 @@
     <g:render template="/template/LinkSharing"></g:render>
 </div>
 <div class="row">
-    <div class="col-md-5 pull-left"><g:render template="/template/searchtrendtopics"</div>
+    <div class="col-md-5 pull-left"><g:render template="/template/searchtrendtopics"/></div>
 
 
 
@@ -26,7 +26,7 @@
 </div>
 <div class="row">
 
-    <div class="col-md-5 pull-left"><g:render template="/template/searchtopposts" /></div>
+    <div class="col-md-5 pull-left"></div>
 
 
 

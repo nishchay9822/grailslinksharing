@@ -1,8 +1,8 @@
-
+<body>
     <div class="posts">
         <div class="card" style="border:  2px solid black;">
             <div class="card-header" >Subscriptions</div>
-        <g:each in="${topicList}"  var="tt">
+        <g:each in="${sub5list}"  var="tt">
             <div class="card-body">
                 <div class="container mt-6" style="border:  2px solid black;">
                     %{--            <g:if test="${topicList}">--}%
@@ -25,20 +25,20 @@
                                 <g:link controller="topic" action="topicshow"  params="[tName: tt.id]">${tt.name}</g:link>
                                 <div class="col-sm-4">
 
-                                    <g:link controller="dashboard" action="subscribetopic" class="card-text post_textsize">unsubscribe</g:link>
+                                    <a class="unsubscribe${tt.id}" onclick="unsub(${tt.id})">unsubscribe</a>
                                 </div>
 
 
                                 <div class="col-sm-5">
                                     <strong class="post_textsize">Subscriptions</strong>
                                     <p>
-                                        50
+                                        <ls:subscriptionCount topicId="${tt.id}"></ls:subscriptionCount>
                                     </p>
                                 </div>
                                 <div class="col-sm-2">
                                     <strong class="post_textsize">post</strong>
                                     <p>
-                                        50
+                                        <ls:resourceCount topicId="${tt.id}"></ls:resourceCount>
                                     </p>
                                 </div>
                             </div>
@@ -90,6 +90,22 @@
         </g:each>
         </div>
         </div>
+    <script>
+    function unsub(id)
+{
+    $.ajax({
+        method: 'post',
+        url: "http://localhost:8091/subscription/delete",
+        data: {"topicid": id},
+        datatype: "JSON",
+        success: function (result) {
+            $(".unsubscribe" + id).hide();
+            $(".subscribe" + id).text("Unsubscribe");
+        },
+    });
+};
+    </script>
+    </body>
 
 
 

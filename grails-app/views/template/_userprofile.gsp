@@ -17,13 +17,13 @@
                         </tr>
 <tr>
     <td>No. of topics:</td>
-%{--    <td>{linksharingapp.Topic.countByCreatedBy(session.user.userName)}</td>--}%
+
     <td><a    data-toggle="modal"
           data-target="#topiclist"><ls:topicCount userId="${session.user.id}"></ls:topicCount></a></td>
 </tr>
 <tr>
     <td>No. of subscription :</td>
-%{--    <td>{linksharingapp.Topic.countByCreatedBy(session.user.userName)}</td>--}%
+
 <td><a  data-toggle="modal"
         data-target="#sublist"><ls:subscriptionCount userId="${session.user.id}"></ls:subscriptionCount></a></td>
 </tr>
@@ -32,7 +32,7 @@
 </div>
 
 
-<div class="modal fade" id="sublist" role="dialog">
+<div class="modal fade" id="topiclist" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -49,11 +49,12 @@
                         <th>visibility</th>
                         <th></th>
                     </tr>
+                    <g:each in="${topicList}" var="topic">
                     <tr>
-                        <td>${}</td>
-                        <td></td>
-                        <td></td>
+                        <td>${topic.name}</td>
+                        <td>${topic.visibility}</td>
                     </tr>
+                    </g:each>
                 </table>
             </div>
         </div>
@@ -64,7 +65,7 @@
 
 %{--topic modal--}%
 
-<div class="modal fade" id="topiclist" role="dialog">
+<div class="modal fade" id="sublist" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -81,11 +82,13 @@
                         <th>visibility</th>
                         <th>Seriousness</th>
                     </tr>
-                    <tr>
-                        <td>${}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <g:each in="${topicList}" var="topic">
+                        <tr>
+                            <td>${topic.name}</td>
+                            <td>${topic.visibility}</td>
+                            <td></td>
+                        </tr>
+                    </g:each>
                 </table>
             </div>
         </div>

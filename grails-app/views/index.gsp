@@ -21,6 +21,8 @@
     <div class="message">${flash.messageregistered}</div>
     <div class="message">${flash.notexist}</div>
     <div class="message">${flash.messagelogout}</div>
+    <div class="message">${flash.messagedontmatch}</div>
+    <div class="message">${flash.messageforgot}</div>
 
     <div class="searchbar">
         <div class="search-container">
@@ -174,7 +176,7 @@
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter password"
                                    name="password" required>
-                            <h5>Use at least one digit, one upper case and one special character</h5>
+%{--                            <h5>Use at least one digit, one upper case and one special character</h5>--}%
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
@@ -185,12 +187,12 @@
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
-                        <div class="form-group form-check">
+%{--                        <div class="form-group form-check">--}%
 
-                            <label for="photo">Select a photo</label>
-                            <input type="file" class="form-control" id="photo"
-                                   name="photo">
-                        </div>
+%{--                            <label for="photo">Select a photo</label>--}%
+%{--                            <input type="file" class="form-control" id="photo"--}%
+%{--                                   name="photo">--}%
+%{--                        </div>--}%
                         <button type="submit" class="btn btn-primary" id="bt">Register</button>
                     </g:form>
                 </div>

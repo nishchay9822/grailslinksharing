@@ -37,19 +37,82 @@ class TopicController {
     }
 
 
+//
+//    def search()
+//    {         def result = Topic.findAllByNameLikeAndVisibility("%${params.search}%" , Topic.Visibility.PUBLIC)
+//             if (result) {
+//                render([topic: result.id,
+//                        topicname: result.name] as JSON)
+//            }
+//             else {
+//                render(status: 500)
+//            }
+//
+//    }
+//
 
-    def search()
-    {
-            def result = Topic.findAllByNameLike("%${params.search}%")
+    def searching() {
 
-            if (result) {
-                render([topic: result.id,  description: result.resources.description,
-                        userName: result.createdBy.userName] as JSON)
-            } else {
-                render(status: 500)
+
+        if (params) {
+            def criteria = Topic.createCriteria()
+            def result = criteria.list() {
+                if(Topic.cre)
+
+                and {
+                    ilike("name", "${params.search}%")
+
+
+
+                       eq('visibility', Topic.Visibility.PUBLIC)
+
+                             ('createdBy', session.user)
+                         }
+
+                }
             }
-
+            render(view: '/search/searchview', model: [result: result])
+        }
     }
+
+
+//    def search()
+//    {
+//        for(String token: tokenize(description)) map.get(token).add(item)
+//    }
+
+//    def search()
+//    {
+//        def criteria = Resource.createCriteria()
+//        params.user = session.user
+//       List<Resource> resourceList = criteria.list {
+//            if(params.user && params.user.isAdmin){
+//
+//            }else if(params.user){
+//                'topic' {
+//                    'subscriptions' {
+//                        eq('user', params.user)
+//                    }
+//                }
+//            }else{
+//                'topic' {
+//                    eq('visibility', Topic.Visibility.PUBLIC)
+//                }
+//            }
+//
+//            or{
+//                ilike('description',"%${params.search}%")
+//                'topic'{
+//                    ilike('name',"%${params.search}%")
+//                }
+//            }
+//        }
+//        if(resourceList) {
+//            render([topic: resourceList.topic.id, description: resourceList.description,
+//                    topicname: resourceList.createdBy.userName] as JSON)
+//        }
+
+//    }
 
 
     def delete(Topic topic)
@@ -57,7 +120,10 @@ class TopicController {
 
         if(topic) {
             def topicc = Topic.findById(params.topicid)
+//            List<Resource> res =  topicc.resources.toList()
+//            res.delete()
             topicc.delete(flush: true)
+
         }
         def topics=Topic.list()
         render(model:[topicname: topics.name , topicid: topics.id] as JSON)
